@@ -1,0 +1,5 @@
+type III secretion system protein SpaS [Salmonella enterica]
+ATPase_flagellum-secretory_path_III
+antigen presentation protein SpaN [Salmonella enterica]
+
+My program used 930 codons as a threshold
