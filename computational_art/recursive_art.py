@@ -4,6 +4,9 @@ import math
 import random
 from PIL import Image
 
+"""Overall good job! Work on adding tests and more comments to your code. Check my comments for more specific
+feedback"""
+
 
 #Function Definitions
 def prod(a,b):
@@ -25,6 +28,14 @@ def y0(a,b):
 blocks={0:"prod",1:"avg",6:"cos_pi",7:"sin_pi",4:"squarert",5:"square",2:"x0",3:"y0"}
 args={"prod":2,"avg":2,"cos_pi":1,"sin_pi":1,"squarert":1,"square":1,"x0":2,"y0":2}
 
+#I really like how you made all of these split into seperate unctions. Great coding practice! :)
+
+# However...you might want to wrap these variables blocks and args inside build_random_function rather than
+# out in the open. People try to avoid having too many global variables in their file so that it won't clash
+# and conflict with other variable names. If it's defined in a function, it's only locally defined to that function,
+# which is all you need here. Also..there might be a python defined thing called args already - I may be wrong
+# but just be careful with that 
+
 
 def build_random_function(min_depth, max_depth):
     # print 'buildrandomfunc'
@@ -44,14 +55,13 @@ def build_random_function(min_depth, max_depth):
     myFunc=blocks[random.randint(0,7)]
     params=args[myFunc]
     finalList=[]
-    finalList+=[myFunc]
+    finalList+=[myFunc] #append or extend instead of += as better practice when modifying variables in place
     for i in range(0,params):
         finalList+=[build_random_function(depth-1,depth-1)]
     return finalList
 
+    #Nice. Add some comments and doctests though
     
-
-
 
 def evaluate_random_function(f, x, y):
     """ Evaluate the random function f with inputs x,y
@@ -103,6 +113,8 @@ def evaluate_random_function(f, x, y):
     
     return 'error'
 
+    #Good. Add tests though!
+
 def remap_interval(val, input_interval_start, input_interval_end, output_interval_start, output_interval_end):
     """ Given an input value in the interval [input_interval_start,
         input_interval_end], return an output value scaled to fall within
@@ -130,6 +142,8 @@ def remap_interval(val, input_interval_start, input_interval_end, output_interva
     y=(float(input_interval_end)-float(input_interval_start))
     z=x/y
     return output_interval_start+(z*(output_interval_end-output_interval_start))
+
+    #nice and concise. Good job.
 
 
 def color_map(val):
